@@ -105,4 +105,18 @@ public class ActionsTest {
         String afterClickText = rightClick.getAttribute("value");
         Assert.assertEquals(afterClickText,"temu");
     }
+
+    @Test
+    public void dragAndDrop() {
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("file:\\C:\\Java training projects\\SeleniumIntermidate\\src\\main\\resources\\DragandDrop.html");
+        WebElement box = driver.findElement(By.cssSelector("[data-testID=\"box\"]"));
+        WebElement img = driver.findElement(By.cssSelector("[data-testID=\"img\"]"));
+
+        Actions actions = new Actions(driver);
+        actions.clickAndHold(img).moveToElement(box).release().perform();
+
+    }
+
 }
