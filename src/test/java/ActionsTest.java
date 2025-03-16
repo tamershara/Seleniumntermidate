@@ -13,7 +13,7 @@ public class ActionsTest {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("file:\\C:\\Java training projects\\SeleniumIntermidate\\src\\main\\resources\\actions.html");
-        WebElement oneClickButton = driver.findElement(By.cssSelector("[data-testID=\"onclick\"]"));
+        WebElement oneClickButton = driver.findElement(By.cssSelector("[data-testID=\"onClick\"]"));
         String beforeClickText = oneClickButton.getText();
         Actions actions = new Actions(driver);
         actions.click(oneClickButton).perform();
@@ -26,11 +26,24 @@ public class ActionsTest {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("file:\\C:\\Java training projects\\SeleniumIntermidate\\src\\main\\resources\\actions.html");
-        WebElement oneClickButton = driver.findElement(By.cssSelector("[data-testID=\"onclick\"]"));
-        String beforeClickText = oneClickButton.getText();
+        WebElement doubleClick = driver.findElement(By.cssSelector("[data-testID=\"onDoubleClick\"]"));
+        String beforeClickText = doubleClick.getText();
         Actions actions = new Actions(driver);
-        actions.doubleClick(oneClickButton).perform();
-        String afterClickText = oneClickButton.getAttribute("value");
+        actions.doubleClick(doubleClick).perform();
+        String afterClickText = doubleClick.getAttribute("value");
+        Assert.assertEquals(afterClickText,"temu");
+    }
+
+    @Test
+    public void onRightClick() {
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("file:\\C:\\Java training projects\\SeleniumIntermidate\\src\\main\\resources\\actions.html");
+        WebElement rightClick = driver.findElement(By.cssSelector("[data-testID=\"onRightClick\"]"));
+        String beforeClickText = rightClick.getText();
+        Actions actions = new Actions(driver);
+        actions.contextClick(rightClick).perform();
+        String afterClickText = rightClick.getAttribute("value");
         Assert.assertEquals(afterClickText,"temu");
     }
 }
