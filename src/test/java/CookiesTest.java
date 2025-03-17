@@ -8,11 +8,16 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 import java.time.Duration;
+
+import static Utils.Utils.takeScreenShot;
+
 public class CookiesTest {
 
     @Test
-    public void cookiesTest() {
+    public void cookiesTest() throws IOException {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://todo.qacart.com");
@@ -29,6 +34,7 @@ public class CookiesTest {
         WebElement welcomeMessage = driver.findElement(By.cssSelector("[data-testid=\"welcome\"]"));
         wait.until(ExpectedConditions.visibilityOf(welcomeMessage));
         Assert.assertTrue(welcomeMessage.isDisplayed());
+        takeScreenShot(driver,"Welcome");
 
     }
 }
